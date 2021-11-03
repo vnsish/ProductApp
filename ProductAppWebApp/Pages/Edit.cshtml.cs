@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,18 +13,18 @@ using ProductAppAPI.Models;
 
 namespace ProductAppWebApp.Pages
 {
-    public class ProductModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly HttpClient _client;
         private readonly IConfiguration _configuration;
 
-        public Product product { get; set; }
-
-        public ProductModel(HttpClient client, IConfiguration configuration)
+        public EditModel(HttpClient client, IConfiguration configuration)
         {
             _client = client;
             _configuration = configuration;
         }
+        [BindProperty]
+        public Product product { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,6 +35,20 @@ namespace ProductAppWebApp.Pages
             product = response.Content.ReadFromJsonAsync<Product>().Result;
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var content = JsonSerializer.Serialize(product);
+
+            var response = await _client.PutAsync($"{_configuration["APIurl"]}/api/Products/{product.ID}", new StringContent(content, Encoding.UTF8, "application/json"));
+
+            return RedirectToPage("./Index");
         }
     }
 }

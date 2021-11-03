@@ -11,18 +11,19 @@ using ProductAppAPI.Models;
 
 namespace ProductAppWebApp.Pages
 {
-    public class ProductModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly HttpClient _client;
         private readonly IConfiguration _configuration;
 
-        public Product product { get; set; }
-
-        public ProductModel(HttpClient client, IConfiguration configuration)
+        public DeleteModel(HttpClient client, IConfiguration configuration)
         {
             _client = client;
             _configuration = configuration;
         }
+
+        [BindProperty]
+        public Product product { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,6 +34,18 @@ namespace ProductAppWebApp.Pages
             product = response.Content.ReadFromJsonAsync<Product>().Result;
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var response = await _client.DeleteAsync($"{_configuration["APIurl"]}/api/Products/{product.ID}");
+
+            return RedirectToPage("./Index");
         }
     }
 }

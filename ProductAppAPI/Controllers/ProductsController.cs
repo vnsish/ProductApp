@@ -42,6 +42,14 @@ namespace ProductAppAPI.Controllers
             return product;
         }
 
+        [HttpGet("find/{query}")]
+        public async Task<ActionResult<IEnumerable<Product>>> FindProduct(string query)
+        {
+            var found = await _context.Product.Where(b => b.Name.Contains(query)).ToListAsync();
+            return found;
+
+        }
+
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

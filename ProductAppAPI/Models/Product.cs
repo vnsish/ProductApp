@@ -15,6 +15,7 @@ namespace ProductAppAPI.Models
         public int Stock { get; set; }
         [Display(Name = "Preço")]
         [Range(0, Double.MaxValue, ErrorMessage = "O preço deve ser positivo.")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public double Price { get; set; }
     }
 }
