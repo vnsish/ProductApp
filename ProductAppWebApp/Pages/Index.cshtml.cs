@@ -30,12 +30,14 @@ namespace ProductAppWebApp.Pages
 
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string sortOrder { get; set; }
 
         public string NameSort { get; set; }
         public string StockSort { get; set; }
         public string PriceSort { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string SearchString)
+        public async Task OnGetAsync(string SearchString)
         {
             NameSort = sortOrder == "name_asc" ? "name_desc" : "name_asc";
             PriceSort = sortOrder == "price_asc" ? "price_desc" : "price_asc";
