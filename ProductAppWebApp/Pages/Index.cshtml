@@ -18,50 +18,17 @@
                 <tr>
                     <th>
                         <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-SearchString="@Model.SearchString">
-                            Nome @switch (Model.sortOrder)
-                            {
-                                case "name_asc":
-                                    <i class="fa-solid fa-sort-up"></i>
-                                    break;
-                                case "name_desc":
-                                    <i class="fa-solid fa-sort-down"></i>
-                                    break;
-                                default:
-                                    <i class="fa-solid fa-sort"></i>
-                                    break;
-                            }
+                            Nome
                         </a>
                     </th>
                     <th>
                         <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.StockSort" asp-route-SearchString="@Model.SearchString">
-                            Estoque @switch (Model.sortOrder)
-                            {
-                                case "stock_asc":
-                                    <i class="fa-solid fa-sort-up"></i>
-                                    break;
-                                case "stock_desc":
-                                    <i class="fa-solid fa-sort-down"></i>
-                                    break;
-                                default:
-                                    <i class="fa-solid fa-sort"></i>
-                                    break;
-                            }
+                            Estoque
                         </a>
                     </th>
                     <th>
                         <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" asp-route-SearchString="@Model.SearchString">
-                            Preço @switch (Model.sortOrder)
-                            {
-                                case "price_asc":
-                                    <i class="fa-solid fa-sort-up"></i>
-                                    break;
-                                case "price_desc":
-                                    <i class="fa-solid fa-sort-down"></i>
-                                    break;
-                                default:
-                                    <i class="fa-solid fa-sort"></i>
-                                    break;
-                            }
+                            Preço
                         </a>
                     </th>
                     <th></th>
@@ -69,7 +36,7 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.Products)
-                                {
+                {
                     <tr>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Name)
