@@ -42,6 +42,7 @@ namespace ProductAppAPI.Controllers
             return product;
         }
 
+        //GET api/find/query
         [HttpGet("find/{query}")]
         public async Task<ActionResult<IEnumerable<Product>>> FindProduct(string query)
         {

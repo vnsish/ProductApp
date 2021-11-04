@@ -1,22 +1,35 @@
-﻿@page  
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Product App";
 }
 
 <a asp-page="Create" class="btn btn-primary">Novo produto</a>
-<div class="col-md-6">
+
+<form class="col-md-4 pt-2">
+    <div class="input-group ">
+        <input type="text" class="form-control" id="searchQuery" asp-for="SearchString" placeholder="Buscar produtos..."><input type="submit" value="Buscar" class="btn btn-success"/>
+    </div>
+</form>
+
+<div class="col-md-10 pt-2">
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    Nome
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-SearchString="@Model.SearchString">
+                        Nome
+                    </a>
                 </th>
                 <th>
-                    Estoque
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.StockSort" asp-route-SearchString="@Model.SearchString">
+                        Estoque
+                    </a>
                 </th>
                 <th>
-                    Preço
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" asp-route-SearchString="@Model.SearchString">
+                        Preço
+                    </a>
                 </th>
                 <th></th>
             </tr>
