@@ -24,10 +24,8 @@
             <span asp-validation-for="product.Price" class="text-danger"></span>
         </div>
         <div class="form-group pt-1">
-            <input type="submit" value="Salvar" class="btn btn-success" />
+            <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Salvar</button> 
+            <a asp-page="Index" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
         </div>
     </form>
-    <div class="pt-1">
-        <a asp-page="Index" class="btn btn-primary">Voltar</a>
-    </div>
 </div>

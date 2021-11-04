@@ -7,9 +7,23 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+a.tablelink {
+    color: white;
+    text-decoration: none;
+}
+
+a.tablelink:hover {
+        color: silver;
+        text-decoration: none;
+}
+
+tr:last-child {
+    border-bottom-style: hidden;
+}
+
+.table-wrapper {
+    border: 1px solid #212529;
+    border-radius: 5px;
 }
 
 .btn-primary {
@@ -23,6 +37,9 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */

@@ -4,56 +4,56 @@
     ViewData["Title"] = "Product App";
 }
 
-<a asp-page="Create" class="btn btn-primary">Novo produto</a>
+<a asp-page="Create" class="btn btn-primary"><i class="fa-solid fa-file"></i> Novo produto</a>
 
 <form class="col-md-4 pt-2">
     <div class="input-group ">
-        <input type="text" class="form-control" id="searchQuery" asp-for="SearchString" placeholder="Buscar produtos..."><input type="submit" value="Buscar" class="btn btn-success"/>
+        <input type="text" class="form-control" id="searchQuery" asp-for="SearchString" placeholder="Buscar produtos..."><button type="submit" class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
     </div>
 </form>
 
-<div class="col-md-10 pt-2">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-SearchString="@Model.SearchString">
-                        Nome
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.StockSort" asp-route-SearchString="@Model.SearchString">
-                        Estoque
-                    </a>
-                </th>
-                <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" asp-route-SearchString="@Model.SearchString">
-                        Preço
-                    </a>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Products)
-            {
+<div class="table-wrapper col-md-10 mt-2">
+        <table class="table table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Stock)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-page="./Product" asp-route-id="@item.ID">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
+                    <th>
+                        <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-SearchString="@Model.SearchString">
+                            Nome
+                        </a>
+                    </th>
+                    <th>
+                        <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.StockSort" asp-route-SearchString="@Model.SearchString">
+                            Estoque
+                        </a>
+                    </th>
+                    <th>
+                        <a class="tablelink" asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" asp-route-SearchString="@Model.SearchString">
+                            Preço
+                        </a>
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Stock)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td class="align-middle">
+                            <a asp-page="./Edit" class="btn btn-primary" asp-route-id="@item.ID"><i class="fa-solid fa-pen"></i> Editar</a>
+                            <a asp-page="./Product" class="btn btn-primary" asp-route-id="@item.ID"><i class="fa-solid fa-circle-info"></i> Detalhes</a>
+                            <a asp-page="./Delete" class="btn btn-danger" asp-route-id="@item.ID"><i class="fa-solid fa-circle-xmark"></i> Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 </div>

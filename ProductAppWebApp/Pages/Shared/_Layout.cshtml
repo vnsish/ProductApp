@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand navbar-dark bg-dark py-3 px-3">
+            <a class="navbar-brand">Product App</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Index">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="container p-4">
         <main role="main" class="content pb-3">
             @RenderBody()
